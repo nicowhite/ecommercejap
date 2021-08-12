@@ -144,14 +144,14 @@ a.custom-card:hover {
 
 /* ////////////////////Login ////////////////// */
 
-.labelLogin {
+.inputLogin {
   height: 50px;
   width: 200px;
 }
 
-.avatar {
+.loginImage {
   width: 500px;
-  margin-bottom: 50px;
+  margin: 200px 0px 30px 0px;
 }
 
 #logUser {
