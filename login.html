@@ -19,7 +19,7 @@
 <body class="text-center loginBody">
 
   <div class="allLogin">
-    <form action="index.html">
+    <form onsubmit="return false" action="/action_page.php">
       <div class="imgcontainer">
         <img src="/ecommercejap/img/login.png" alt="Avatar" class="avatar">
       </div>
@@ -31,7 +31,7 @@
         <label for="psw"><b></b></label>
         <input type="password" placeholder="Ingresar Contraseña" name="psw" required class="labelLogin"><br>
 
-        <button type="submit" class="btn btn-primary">Ingresa</button>
+        <button type="submit" class="btn btn-primary" id="logUser">Ingresa</button>
         <label>
           <input type="checkbox" checked="checked" name="remember">Recordarme
         </label>
