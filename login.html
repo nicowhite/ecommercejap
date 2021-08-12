@@ -13,8 +13,9 @@
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <style>
-    html, body{
+  <!-- <style>
+    html,
+    /* body { */
       height: 100%;
     }
 
@@ -34,20 +35,41 @@
       padding: 15px;
       margin: auto;
     }
-  </style>
+  </style> -->
 </head>
 
-<body class="text-center">
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 08/08/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+<body class="text-center loginBody">
+
+  <div class="allLogin">
+    <form action="action_page.php" method="post">
+      <div class="imgcontainer">
+        <img src="/ecommercejap/img/login.png" alt="Avatar" class="avatar">
+      </div>
+
+      <div class="login">
+        <label for="uname"><b></b></label>
+        <input type="text" placeholder="Ingresar Usuario" name="uname" required class="labelLogin"><br>
+
+        <label for="psw"><b></b></label>
+        <input type="password" placeholder="Ingresar Contraseña" name="psw" required class="labelLogin"><br>
+
+        <button type="submit" class="btn btn-primary">Ingresa</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember">Recordarme
+        </label>
+      </div>
+
+
   </div>
+  </form>
+
+
+
+
+
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
 </body>
+
 </html>
