@@ -49,9 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
     getJSONData(PRODUCTS_URL).then(function (resultObj) {
       if (resultObj.status === "ok") {
         currentProductArray = resultObj.data;
-        //Muestro las categorías ordenadas
         showProductList(currentProductArray);
       }
     });
-  }, 500);
+  },200);
 });
