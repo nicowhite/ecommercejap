@@ -1,10 +1,10 @@
 var currentProductArray = [];
 
 function showProductList(array) {
-  let htmlContentToAppend = "";
+  let contentProduct = "";
   for (let i = 0; i < array.length; i++) {
     let product = array[i];
-    htmlContentToAppend +=    
+    contentProduct +=    
       `
         <div class="list-group-item list-group-item-action">
             <div class="row">
@@ -36,7 +36,7 @@ function showProductList(array) {
         </div>
         `;
     document.getElementById("cat-list-container").innerHTML =
-      htmlContentToAppend;
+      contentProduct;
   }
 }
 
@@ -44,7 +44,6 @@ function showProductList(array) {
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function () {
-  // showSpinner();
   setTimeout(function () {
     getJSONData(PRODUCTS_URL).then(function (resultObj) {
       if (resultObj.status === "ok") {
@@ -52,5 +51,5 @@ document.addEventListener("DOMContentLoaded", function () {
         showProductList(currentProductArray);
       }
     });
-  },200);
+  },);
 });
