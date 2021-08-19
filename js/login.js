@@ -1,8 +1,11 @@
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
+
 document.addEventListener("DOMContentLoaded", function (e) {
-  document.getElementById("logUser").onclick = function (e) {
-    window.location.href = "./index.html";
-  };
+  document.getElementById("logUser").addEventListener("click", function (e) {
+    let yourUser = document.getElementById("logU");
+    let yourPassword = document.getElementById("passU");
+    if (yourPassword.value != 0 && yourUser.value != 0) {
+      window.location.href = "./index.html";
+    }
+  });
 });
+

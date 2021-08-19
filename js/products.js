@@ -4,7 +4,7 @@ function showProductList(array) {
   let htmlContentToAppend = "";
   for (let i = 0; i < array.length; i++) {
     let product = array[i];
-    htmlContentToAppend +=    //lo que escribiria en el html   ---abajo--
+    htmlContentToAppend +=    
       `
         <div class="list-group-item list-group-item-action">
             <div class="row">
@@ -44,7 +44,7 @@ function showProductList(array) {
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function () {
-  showSpinner();
+  // showSpinner();
   setTimeout(function () {
     getJSONData(PRODUCTS_URL).then(function (resultObj) {
       if (resultObj.status === "ok") {
