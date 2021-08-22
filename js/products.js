@@ -15,8 +15,8 @@ fetch(PRODUCTS_URL)
 
 
             document.getElementById("productsContainer").innerHTML += `
-            <div class="list-group-item list-group-item-action">
-            <div class="row">
+             <div class="list-group-item list-group-item-action">
+              <div class="row">
               <div class="col-3">
                   <img src="` + image + `" alt="` + description + `" class="img-thumbnail">
               </div>
@@ -32,6 +32,8 @@ fetch(PRODUCTS_URL)
             </div>
             </div>
             `
+
+            
             i++;
     }      
 });
