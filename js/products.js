@@ -8,11 +8,10 @@ fetch(PRODUCTS_URL)
         while(i < data.length){
             let product = data[i];
             let nombre = product.name;
-            let cost = product.cost;
             let currency = product.currency;
+            let cost = product.cost;
             let image = product.imgSrc;
             let description = product.description;
-
 
             document.getElementById("productsContainer").innerHTML += `
              <div class="list-group-item list-group-item-action">
@@ -32,8 +31,6 @@ fetch(PRODUCTS_URL)
             </div>
             </div>
             `
-
-            
             i++;
     }      
 });
