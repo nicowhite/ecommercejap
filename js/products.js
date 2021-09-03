@@ -147,7 +147,7 @@ document.getElementById("sortByCount").onclick = function () {
     relevance();
 };
 
-////////// Orden Precio descendente //////////
+////////// Orden Precio ascendente //////////
 
 
     function lowerPrice() {
