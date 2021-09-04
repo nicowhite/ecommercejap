@@ -85,22 +85,22 @@ fetch(PRODUCTS_URL)
         }
     })
     };
-    document.getElementById('rangeFilterCount').addEventListener("click" , function(){
-        maxAndMin();})
+    document.getElementById('rangeFilterCount').onclick = function() {
+        maxAndMin();
+    }
     
 
 
 
-/////////////////////////////////// Boton de Limpiar///////////////////////////////////
+///////////////////////////////// Boton de Limpiar///////////////////////////////////
 
 document.getElementById("clearRangeFilter").addEventListener("click", function(){
     document.getElementById("rangeFilterCountMin").value = "";
     document.getElementById("rangeFilterCountMax").value = "";
 
-    minCount = undefined;
-    maxCount = undefined;})
+    ;})
 
-
+ 
 
 /////////////////////////////////// Relevancia ///////////////////////////////////
 
@@ -115,24 +115,24 @@ function relevance() {
             let listaRelev = "";
             let i = 0;
             while(i < data.length) {
-                let product = data[i];
-                console.log(product);
+                let producto = data[i];
+                console.log(producto);
                 listaRelev +=  `
                 <div class="list-group-item list-group-item-action">
                  <div class="row">
                  <div class="col-3">
-                     <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
+                     <img src="` + producto.imgSrc + `" alt="` + producto.description + `" class="img-thumbnail">
                  </div>
                  <div class="col">
                      <div class="d-flex w-100 justify-content-between">
-                         <h4 class="mb-1">`+ product.name + `</h4>
-                         <small class="text-muted">` + product.currency + ' ' + product.cost + `</small><br>
-                         <small class="text-muted">` + product.soldCount + ` vendidos</small>
+                         <h4 class="mb-1">`+ producto.name + `</h4>
+                         <small class="text-muted">` + producto.currency + ' ' + producto.cost + `</small><br>
+                         <small class="text-muted">` + producto.soldCount + ` vendidos</small>
                        
    
                      </div>
                  
-                     <div class="text-muted"> <h5>` + product.description + `</h5></div>
+                     <div class="text-muted"> <h5>` + producto.description + `</h5></div>
                  </div>
                  
                </div>
@@ -236,3 +236,5 @@ function higherPrice() {
 document.getElementById("sortDesc").onclick = function () {
     higherPrice();
 };
+
+
