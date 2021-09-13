@@ -15,6 +15,7 @@ fetch(PRODUCTS_URL)
 
             htmlContentToAppend +=
             `
+            <a href="product-info.html" style="text-decoration: none;">
              <div class="list-group-item list-group-item-action">
               <div class="row">
               <div class="col-3">
@@ -34,6 +35,7 @@ fetch(PRODUCTS_URL)
               
             </div>
             </div>
+            
             `
             i++;
     }      
@@ -59,6 +61,7 @@ fetch(PRODUCTS_URL)
                 
                 productsFiltrados += 
                 `
+                <a href="product-info.html" style="text-decoration: none;">
              <div class="list-group-item list-group-item-action">
               <div class="row">
               <div class="col-3">
@@ -118,6 +121,7 @@ function relevance() {
                 let producto = data[i];
                 console.log(producto);
                 listaRelev +=  `
+                <a href="product-info.html" style="text-decoration: none;">
                 <div class="list-group-item list-group-item-action">
                  <div class="row">
                  <div class="col-3">
@@ -163,6 +167,7 @@ document.getElementById("sortByCount").onclick = function () {
                     let product = data[i];
                     console.log(product);
                     listaRelev +=  `
+                    <a href="product-info.html" style="text-decoration: none;">
                     <div class="list-group-item list-group-item-action">
                      <div class="row">
                      <div class="col-3">
@@ -208,6 +213,7 @@ function higherPrice() {
                 let product = data[i];
                 console.log(product);
                 listaRelev +=  `
+                <a href="product-info.html" style="text-decoration: none;">
                 <div class="list-group-item list-group-item-action">
                  <div class="row">
                  <div class="col-3">
