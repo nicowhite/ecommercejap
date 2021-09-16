@@ -1,28 +1,28 @@
 ///////////// Mostrar la Galería /////////////
 
-fetch(PRODUCT_INFO_URL)
-  .then((response) => response.json())
-  .then((data) => {
-    // console.log(data.images);
-    images = data.images;
-    let htmlContentToAppend = "";
-    for (let i = 0; i < images.length; i++) {
-      let image = images[i];
+function showGallery() {
+  fetch(PRODUCT_INFO_URL)
+    .then((response) => response.json())
+    .then((data) => {
+      // console.log(data.images);
+      images = data.images;
+      let htmlContentToAppend = "";
+      for (let i = 0; i < images.length; i++) {
+        let image = images[i];
 
-      htmlContentToAppend +=
-        `
+        htmlContentToAppend += `
             <div class="col-lg-3 col-md-4 col-6">
                 <div class="d-block mb-4 h-100">
-                    <img id="imagenes" style="cursor: zoom-in" height=800 width=400 class="img-fluid img-thumbnail" src="` +
-        image +
-        `" alt="">
+                    <img id="imagenes" style="cursor: zoom-in" height=800 width=400 class="img-fluid img-thumbnail" src="${image}" alt="">
                 </div>
             </div>
             `;
 
-      document.getElementById("gallery").innerHTML = htmlContentToAppend;
-    }
-  });
+        document.getElementById("gallery").innerHTML = htmlContentToAppend;
+      }
+    });
+}
+showGallery();
 
 ///// Car Info /////
 
@@ -39,7 +39,6 @@ function showInfo() {
       document.getElementById("productCategory").innerHTML = data.category;
     });
 }
-
 showInfo();
 
 ///// Comments /////
@@ -52,8 +51,8 @@ function comments() {
       while (i < data.length) {
         let comments = data[i];
         let stars = "";
-        for (let f = 0; f < comments.score; f++)
-          stars += '<i class="fas fa-star"></i>'; // Estrella de fontawesome
+        for (var f = 0; f < comments.score; f++)
+          stars += '<i class="fas fa-star"></i>';     // fontawesome
 
         htmlContentToAppend +=
           `
