@@ -6,22 +6,25 @@ function showGallery() {
     .then((data) => {
       // console.log(data.images);
       images = data.images;
+      
       let htmlContentToAppend = "";
       for (let i = 0; i < images.length; i++) {
         let image = images[i];
 
-        htmlContentToAppend += `
-            <div class="col-lg-3 col-md-4 col-6">
-                <div class="d-block mb-4 h-100">
-                    <img id="imagenes" style="cursor: zoom-in" height=800 width=400 class="img-fluid img-thumbnail" src="${image}" alt="">
-                </div>
-            </div>
-            `;
-
+        htmlContentToAppend +=
+          ` <div class="col-lg-3 col-md-4 col-6">
+  <div class="d-block mb-4 h-100">
+      <img class="img-fluid img-thumbnail" src="` +
+          image +
+          `" alt="">
+  </div>
+</div>
+`
         document.getElementById("gallery").innerHTML = htmlContentToAppend;
       }
     });
 }
+
 showGallery();
 
 ///// Car Info /////
@@ -37,12 +40,14 @@ function showInfo() {
         data.currency + " " + data.cost;
       document.getElementById("carsSold").innerHTML = data.soldCount;
       document.getElementById("productCategory").innerHTML = data.category;
+
+
     });
 }
 showInfo();
 
 ///// Comments /////
-function comments() {
+function showComments() {
   fetch(PRODUCT_INFO_COMMENTS_URL)
     .then((result) => result.json())
     .then((data) => {
@@ -50,9 +55,9 @@ function comments() {
       let i = 0;
       while (i < data.length) {
         let comments = data[i];
-        let stars = "";
+        let star = "";
         for (var f = 0; f < comments.score; f++)
-          stars += '<i class="fas fa-star"></i>';     // fontawesome
+          star += '<i class="fas fa-star"></i>';          // fontawesome
 
         htmlContentToAppend +=
           `
@@ -62,24 +67,23 @@ function comments() {
                               <p class="mb-1">` +
           comments.user +
           " " +
-          stars +
+          star +
           `</p>
                               
-                              <small class="text-muted">` +
+          <p class="mb-1">` +
           comments.dateTime +
-          `</small>
+          `</p> 
                           </div>
 
                           <div>
-                              <small class="text-muted">` +
+                          <small class="text-muted">` +
           comments.description +
           `</small>
                               <br>
                           </div>
                       </div>
               </div>
-              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+               
               `;
         i++;
       }
@@ -88,4 +92,4 @@ function comments() {
     });
 }
 
-comments();
+showComments();
