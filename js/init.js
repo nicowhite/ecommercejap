@@ -44,4 +44,31 @@ var getJSONData = function(url){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
-}); document.getElementById("showUser").innerHTML= 'Hola! 😃, ' + localStorage.getItem("username");
+}); document.getElementById("showUser").innerHTML= `<div class="dropdown">
+<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+${localStorage.getItem("username")}
+</button>
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  <a class="dropdown-item" href="cart.html">Ver mi Carrito</a>
+  <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
+  <a class="dropdown-item" href="index.html" id='logOut'>Cerrar Sesión</a>
+</div>
+</div>
+`
+
+
+function logOut(){
+  window.localStorage.removeItem('username');
+}
+document.getElementById('logOut').onclick = function() {
+  logOut();
+}
+
+
+
+
+
+
+
+
+

@@ -1,33 +1,4 @@
-///////////// Mostrar la Galería /////////////
-
-function showGallery() {
-  fetch(PRODUCT_INFO_URL)
-    .then((response) => response.json())
-    .then((data) => {
-      // console.log(data.images);
-      images = data.images;
-      
-      let htmlContentToAppend = "";
-      for (let i = 0; i < images.length; i++) {
-        let image = images[i];
-
-        htmlContentToAppend +=
-          ` <div class="col-lg-3 col-md-4 col-6">
-  <div class="d-block mb-4 h-100">
-      <img class="img-fluid img-thumbnail" src="` +
-          image +
-          `" alt="">
-  </div>
-</div>
-`
-        document.getElementById("gallery").innerHTML = htmlContentToAppend;
-      }
-    });
-}
-
-showGallery();
-
-///// Car Info /////
+/////// Car Info ///////
 
 function showInfo() {
   fetch(PRODUCT_INFO_URL)
@@ -40,11 +11,38 @@ function showInfo() {
         data.currency + " " + data.cost;
       document.getElementById("carsSold").innerHTML = data.soldCount;
       document.getElementById("productCategory").innerHTML = data.category;
-
-
     });
 }
 showInfo();
+
+/////// Mostrar la Galería ///////
+
+function showGallery() {
+  fetch(PRODUCT_INFO_URL)
+    .then((response) => response.json())
+    .then((data) => {
+      // console.log(data.images);
+      images = data.images;
+
+      let htmlContentToAppend = "";
+      for (let i = 0; i < images.length; i++) {
+        let image = images[i];
+
+        htmlContentToAppend +=
+          ` <div class="col-lg-3 col-md-4 col-6">
+  <div class="d-block mb-4 h-100">
+      <img class="img-fluid img-thumbnail" src="` +
+          image +
+          `" alt="">
+  </div>
+</div>
+`;
+        document.getElementById("gallery").innerHTML = htmlContentToAppend;
+      }
+    });
+}
+
+showGallery();
 
 ///// Comments /////
 function showComments() {
@@ -56,8 +54,8 @@ function showComments() {
       while (i < data.length) {
         let comments = data[i];
         let star = "";
-        for (var f = 0; f < comments.score; f++)
-          star += '<i class="fas fa-star"></i>';          // fontawesome
+        for (let f = 0; f < comments.score; f++)
+          star += '<i class="fas fa-star"></i>'; // fontawesome
 
         htmlContentToAppend +=
           `
