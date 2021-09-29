@@ -23,6 +23,8 @@ function showGallery() {
     .then((data) => {
       // console.log(data.images);
       images = data.images;
+      
+      const relacionados = data.relatedProducts;
 
       let htmlContentToAppend = "";
       for (let i = 0; i < images.length; i++) {
@@ -91,3 +93,37 @@ function showComments() {
 }
 
 showComments();
+
+
+///// Related Products /////
+
+
+function relatedProducts(){
+fetch(PRODUCTS_URL)
+    .then(response => response.json())
+    .then(data => {
+      let fiat = data[relacionados[1]].imgSrc;
+      let renault = data[3].imgSrc;
+      let htmlContentToAppend = "";
+
+      htmlContentToAppend +=
+      ` <div class="col-lg-3 col-md-4 col-6"><p  style="margin: 0px;">${data[1].name}</p>
+<div class="d-block mb-4 h-100"> 
+  <img class="img-fluid img-thumbnail" src="${fiat}
+    " alt=""> <p  style="margin: 0px;">${data[3].name}</p><img class="img-fluid img-thumbnail" src="${renault}
+    " alt=""> 
+</div>
+</div>
+`;
+    
+document.getElementById("related").innerHTML = htmlContentToAppend;
+    }
+    )};
+
+
+
+
+
+    relatedProducts();
+
+        
