@@ -24,12 +24,10 @@ function showGallery() {
       // console.log(data.images);
       images = data.images;
       
-      const relacionados = data.relatedProducts;
-
+      
       let htmlContentToAppend = "";
       for (let i = 0; i < images.length; i++) {
         let image = images[i];
-
         htmlContentToAppend +=
           ` <div class="col-lg-3 col-md-4 col-6">
   <div class="d-block mb-4 h-100">
@@ -95,35 +93,59 @@ function showComments() {
 showComments();
 
 
-///// Related Products /////
+/// Related Products /////
 
-
-function relatedProducts(){
+function showRelated(){
 fetch(PRODUCTS_URL)
     .then(response => response.json())
     .then(data => {
-      let fiat = data[relacionados[1]].imgSrc;
+      let fiat = data[1].imgSrc;
       let renault = data[3].imgSrc;
       let htmlContentToAppend = "";
-
+   
       htmlContentToAppend +=
-      ` <div class="col-lg-3 col-md-4 col-6"><p  style="margin: 0px;">${data[1].name}</p>
-<div class="d-block mb-4 h-100"> 
-  <img class="img-fluid img-thumbnail" src="${fiat}
-    " alt=""> <p  style="margin: 0px;">${data[3].name}</p><img class="img-fluid img-thumbnail" src="${renault}
-    " alt=""> 
-</div>
-</div>
-`;
+      `<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" ;">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="${fiat}"  alt="fiat"; class="img-fluid img-thumbnail" style="height: 200px;">
+        </div>
+        <div class="carousel-item">
+          <img src="${renault}" alt="renault" class="img-fluid img-thumbnail" style="height: 200px;">
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+      `;;
     
 document.getElementById("related").innerHTML = htmlContentToAppend;
     }
-    )};
+    );
+  }
 
-
-
-
-
-    relatedProducts();
-
+showRelated();
         
+
+
+
+
+
+
+
+
+
+
+
+// ` <div class="col-lg-3 col-md-4 col-6"><p  style="margin: 0px;">${data[1].name}</p>
+// <div class="d-block mb-4 h-100"> 
+//   <img class="img-fluid img-thumbnail" src="${fiat}
+//     " alt=""> <p  style="margin: 0px;">${data[3].name}</p><img class="img-fluid img-thumbnail" src="${renault}
+//     " alt=""> 
+// </div>
+// </div>
+// `;
