@@ -93,7 +93,7 @@ function showComments() {
 showComments();
 
 
-/// Related Products /////
+//// Related Products /////
 
 function showRelated(){
 fetch(PRODUCTS_URL)
@@ -102,14 +102,18 @@ fetch(PRODUCTS_URL)
       let fiat = data[1].imgSrc;
       let renault = data[3].imgSrc;
       let htmlContentToAppend = "";
+
+      
    
       htmlContentToAppend +=
       `<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" ;">
       <div class="carousel-inner">
         <div class="carousel-item active">
+        <h6>${data[1].name}</h6>
           <img src="${fiat}"  alt="fiat"; class="img-fluid img-thumbnail" style="height: 200px;">
         </div>
         <div class="carousel-item">
+        <h6>${data[3].name}</h6>
           <img src="${renault}" alt="renault" class="img-fluid img-thumbnail" style="height: 200px;">
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -130,22 +134,3 @@ document.getElementById("related").innerHTML = htmlContentToAppend;
 
 showRelated();
         
-
-
-
-
-
-
-
-
-
-
-
-// ` <div class="col-lg-3 col-md-4 col-6"><p  style="margin: 0px;">${data[1].name}</p>
-// <div class="d-block mb-4 h-100"> 
-//   <img class="img-fluid img-thumbnail" src="${fiat}
-//     " alt=""> <p  style="margin: 0px;">${data[3].name}</p><img class="img-fluid img-thumbnail" src="${renault}
-//     " alt=""> 
-// </div>
-// </div>
-// `;

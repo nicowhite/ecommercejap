@@ -120,7 +120,7 @@ function relevance() {
             while(i < data.length) {
                 let producto = data[i];
                 console.log(producto);
-                listaRelev +=  `
+                htmlContentToAppend +=  `
                 <a href="product-info.html" style="text-decoration: none;">
                 <div class="list-group-item list-group-item-action">
                  <div class="row">
@@ -143,7 +143,7 @@ function relevance() {
                </div>
                `
                i++;
-                document.getElementById("productsContainer").innerHTML = listaRelev;
+                document.getElementById("productsContainer").innerHTML = htmlContentToAppend;
             }
         });
 }
@@ -166,7 +166,7 @@ document.getElementById("sortByCount").onclick = function () {
                 while(i < data.length) {
                     let product = data[i];
                     console.log(product);
-                    listaRelev +=  `
+                    htmlContentToAppend +=  `
                     <a href="product-info.html" style="text-decoration: none;">
                     <div class="list-group-item list-group-item-action">
                      <div class="row">
@@ -189,7 +189,7 @@ document.getElementById("sortByCount").onclick = function () {
                    </div>
                    `
                    i++;
-                    document.getElementById("productsContainer").innerHTML = listaRelev;
+                    document.getElementById("productsContainer").innerHTML = htmlContentToAppend;
                 }
             });
     }
@@ -212,7 +212,7 @@ function higherPrice() {
             while(i < data.length) {
                 let product = data[i];
                 console.log(product);
-                listaRelev +=  `
+                htmlContentToAppend +=  `
                 <a href="product-info.html" style="text-decoration: none;">
                 <div class="list-group-item list-group-item-action">
                  <div class="row">
@@ -235,7 +235,7 @@ function higherPrice() {
                </div>
                `
                i++;
-                document.getElementById("productsContainer").innerHTML = listaRelev;
+                document.getElementById("productsContainer").innerHTML = htmlContentToAppend;
             }
         });
 }
