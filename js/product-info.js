@@ -15,36 +15,53 @@ function showInfo() {
 }
 showInfo();
 
-/////// Mostrar la Galería ///////
+/////// Mostrar la Galería - Carrusel agregado ///////
 
 function showGallery() {
   fetch(PRODUCT_INFO_URL)
     .then((response) => response.json())
     .then((data) => {
       // console.log(data.images);
-      images = data.images;
-      
-      
       let htmlContentToAppend = "";
-      for (let i = 0; i < images.length; i++) {
-        let image = images[i];
-        htmlContentToAppend +=
-          ` <div class="col-lg-3 col-md-4 col-6">
-  <div class="d-block mb-4 h-100">
-      <img class="img-fluid img-thumbnail" src="` +
-          image +
-          `" alt="">
-  </div>
-</div>
-`;
-        document.getElementById("gallery").innerHTML = htmlContentToAppend;
-      }
+      htmlContentToAppend += `<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" ;">
+   <div class="carousel-inner">
+     <div class="carousel-item active">
+     <h6></h6>
+       <img src="${data.images[0]}"  alt="fiat"; class="img-fluid img-thumbnail" style="height: 300px;">
+    </div>
+    <div class="carousel-item">
+    <h6></h6>
+       <img src="${data.images[1]}" alt="renault" class="img-fluid img-thumbnail" style="height: 300px;">
+     </div>
+     <div class="carousel-item">
+    <h6></h6>
+       <img src="${data.images[2]}" alt="renault" class="img-fluid img-thumbnail" style="height: 300px;">
+     </div>
+     <div class="carousel-item">
+    <h6></h6>
+       <img src="${data.images[3]}" alt="renault" class="img-fluid img-thumbnail" style="height: 300px;">
+     </div>
+     <div class="carousel-item">
+    <h6></h6>
+       <img src="${data.images[4]}" alt="renault" class="img-fluid img-thumbnail" style="height: 300px;">
+     </div>
+     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+     <span class="sr-only">Previous</span>
+   </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+     <span class="carousel-control-next-icon" aria-hidden="true"></span>
+     <span class="sr-only">Next</span>
+   </a>
+ </div>
+   `;
+      document.getElementById("gallery").innerHTML = htmlContentToAppend;
     });
 }
 
 showGallery();
 
-///// Comments /////
+/////// Comments ///////
 function showComments() {
   fetch(PRODUCT_INFO_COMMENTS_URL)
     .then((result) => result.json())
@@ -92,45 +109,32 @@ function showComments() {
 
 showComments();
 
+/////// Productos Relacionados ///////
 
-//// Related Products /////
+function showRelated() {
+  fetch(PRODUCT_INFO_URL)
+    .then((response) => response.json())
+    .then((data) => {
+      for (let i = 0; i < data.relatedProducts.length; i++) {
+        let related = data.relatedProducts[i];
+        console.log(related);
 
-function showRelated(){
-fetch(PRODUCTS_URL)
-    .then(response => response.json())
-    .then(data => {
-      let fiat = data[1].imgSrc;
-      let renault = data[3].imgSrc;
-      let htmlContentToAppend = "";
+        fetch(PRODUCTS_URL)
+          .then((response) => response.json())
+          .then((data) => {
+            let htmlContentToAppend = "";
+            htmlContentToAppend += `<div class="card" style="width: 18rem;">
+  <img src="${data[related].imgSrc}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-text">${data[related].name}</p>
+  </div>
+</div>
+                `;
 
-      
-   
-      htmlContentToAppend +=
-      `<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" ;">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-        <h6>${data[1].name}</h6>
-          <img src="${fiat}"  alt="fiat"; class="img-fluid img-thumbnail" style="height: 200px;">
-        </div>
-        <div class="carousel-item">
-        <h6>${data[3].name}</h6>
-          <img src="${renault}" alt="renault" class="img-fluid img-thumbnail" style="height: 200px;">
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-      `;;
-    
-document.getElementById("related").innerHTML = htmlContentToAppend;
-    }
-    );
-  }
+            document.getElementById("related").innerHTML += htmlContentToAppend;
+          });
+      }
+    });
+}
 
 showRelated();
-        
