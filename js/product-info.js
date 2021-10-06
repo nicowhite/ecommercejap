@@ -112,12 +112,12 @@ showComments();
 /////// Productos Relacionados ///////
 
 function showRelated() {
-  fetch(PRODUCT_INFO_URL)
-    .then((response) => response.json())
-    .then((data) => {
+      fetch(PRODUCT_INFO_URL)
+        .then((response) => response.json())
+        .then((data) => {
       for (let i = 0; i < data.relatedProducts.length; i++) {
-        let related = data.relatedProducts[i];
-        console.log(related);
+        let related = data.relatedProducts[i];  //// 1 y 3.
+ 
 
         fetch(PRODUCTS_URL)
           .then((response) => response.json())
