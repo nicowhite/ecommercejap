@@ -1,43 +1,73 @@
-function showRCart() {
-  fetch(CART_INFO_URL)
-    .then((response) => response.json())
-    .then((data) => {
+fetch(CART_INFO_URL)
+  .then((response) => response.json())
+  .then((data) => {
+    let articles = data.articles[0];
+    let name = articles.name;
+    let count = articles.count;
+    let cost = articles.unitCost;
+    let currency = articles.currency;
+    let img = articles.src;
+    let total = cost * count;
+    let htmlContenttoAppend = "";
 
-        let htmlContentToAppend = "";
-        htmlContentToAppend += `<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" ;">
-     <div class="carousel-inner">
-       <div class="carousel-item active">
-       <h6></h6>
-         <img src="${data.images[0]}"  alt="fiat"; class="img-fluid img-thumbnail" style="height: 300px;">
+    htmlContenttoAppend += `  <div class="container">
+      <div class="text-center p-4">
+        <h2 style="color: crimson;">Carrito de compras</h2>
       </div>
-      <div class="carousel-item">
-      <h6></h6>
-         <img src="${data.images[1]}" alt="renault" class="img-fluid img-thumbnail" style="height: 300px;">
-       </div>
-       <div class="carousel-item">
-      <h6></h6>
-         <img src="${data.images[2]}" alt="renault" class="img-fluid img-thumbnail" style="height: 300px;">
-       </div>
-       <div class="carousel-item">
-      <h6></h6>
-         <img src="${data.images[3]}" alt="renault" class="img-fluid img-thumbnail" style="height: 300px;">
-       </div>
-       <div class="carousel-item">
-      <h6></h6>
-         <img src="${data.images[4]}" alt="renault" class="img-fluid img-thumbnail" style="height: 300px;">
-       </div>
-       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-       <span class="sr-only">Previous</span>
-     </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-       <span class="sr-only">Next</span>
-     </a>
-   </div>
-     `;
-        document.getElementById("artName").innerHTML = htmlContentToAppend;
-      });
-  }
+  
+      <div class="container">
+          <div class="row">
+            Nombre:<div id="artName"> ${name}</div>
+          </div> 
+          <div class="row">
+          Precio:<div id="artPrice"> ${currency + cost}</div>
+          </div>
+          <div class="row">
+            <label for="">Cantidad:</label>
+            <input type="number"id="qt" style="width:50px;" min="0">
+          </div>
+          <div class="row">
+            Imagen:<div><img src="${img}" alt="" id="artImg"></div>
+          </div>
+  
+  <br><br>
+          <div class="row">
+            Total: <div id="artTotal"></div>
+  
+          </div>
 
-showRCart();
+          <div class="row">
+          Envío: <div></div>
+
+          <div class="input-group mb-3">
+  <label class="input-group-text" for="inputGroupSelect01">Departamento</label>
+  <select class="form-select" id="inputGroupSelect01">
+    <option selected>...</option>
+    <option value="1">Montevideo</option>
+    <option value="2">Canelones</option>
+    <option value="3">Colonia</option>
+  </select>
+</div>
+
+          <div class="input-group">
+  <span class="input-group-text">Dirección:</span>
+  <input type="text" aria-label="direccion" class="form-control">
+  
+</div>
+
+<button type="button" class="btn btn-primary">Check Out</button>
+        </div>
+
+      </div>
+  `;
+
+    document.getElementById("cart").innerHTML = htmlContenttoAppend;
+
+    document.getElementById("qt").value = count;
+    document.getElementById("artTotal").innerHTML = total;
+
+    document.getElementById("qt").onclick = function () {
+      let qt = document.getElementById("qt").value;
+      document.getElementById("artTotal").innerHTML = qt * cost;
+    };
+  });
