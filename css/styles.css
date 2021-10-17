@@ -177,3 +177,17 @@ hr {
   width:640px;
   height:360px;
 }
+
+
+
+
+/* Pricing  */
+
+#pricing {
+  padding: 100px;
+  text-align: center;
+}
+
+.pricing-column {
+  padding: 2% 3%;
+}

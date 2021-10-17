@@ -1,73 +1,76 @@
 fetch(CART_INFO_URL)
-  .then((response) => response.json())
+  .then((info) => info.json())
   .then((data) => {
     let articles = data.articles[0];
     let name = articles.name;
-    let count = articles.count;
-    let cost = articles.unitCost;
+    let qt = articles.count;
     let currency = articles.currency;
-    let img = articles.src;
-    let total = cost * count;
-    let htmlContenttoAppend = "";
+    let unitCost = articles.unitCost;
+    let artImg = articles.src;
+    let subtotal = unitCost * qt;
 
-    htmlContenttoAppend += `  <div class="container">
-      <div class="text-center p-4">
-        <h2 style="color: crimson;">Carrito de compras</h2>
-      </div>
-  
-      <div class="container">
-          <div class="row">
-            Nombre:<div id="artName"> ${name}</div>
-          </div> 
-          <div class="row">
-          Precio:<div id="artPrice"> ${currency + cost}</div>
-          </div>
-          <div class="row">
-            <label for="">Cantidad:</label>
-            <input type="number"id="qt" style="width:50px;" min="0">
-          </div>
-          <div class="row">
-            Imagen:<div><img src="${img}" alt="" id="artImg"></div>
-          </div>
-  
-  <br><br>
-          <div class="row">
-            Total: <div id="artTotal"></div>
-  
-          </div>
+    $("#cart").html(`<div class="card" style="width: 30rem" id="shoppingCart">
+    <img src="..." class="card-img-top" alt="..." id="artImg">
+    <div class="card-body">
+      <h5 class="card-title" id="artName">Card title</h5>
+      <input type="number" min="0" id="qt" style="width: 40px;" value="2">
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" id="unitCost">An item</li>
+      <li class="list-group-item"> <button type="button" class="btn btn-primary" id="premium">Premium (15%)</button>
+        <button type="button" class="btn btn-dark" id="express">Express (7%)</button>
+        <button type="button" class="btn btn-warning" id="standard">Standard (5%)</button></li>
+      <li class="list-group-item" id="subtotal">A third item</li>
+      <li class="list-group-item" id="shippingCost">Costo de Envío: </li>
+      <li class="list-group-item" id="costoTotal">Total: </li>
+      <li class="list-group-item"><button type="button" class="btn btn-danger" id="clean">Limpiar</button> </li>
+    </ul>
+    <div class="card-body">
+      <button type="button" class="btn btn-secondary btn-lg" style="width: 27rem">CheckOut</button>
+    </div>
+  </div>
+`);
 
-          <div class="row">
-          Envío: <div></div>
+    $("#artName").html(name);
+    $("#unitCost").html("Precio: " + currency + unitCost);
+    $("#qt").html(qt);
+    $("#subtotal").html("Subtotal: " + subtotal);
+    $("#artImg").attr("src", artImg);
 
-          <div class="input-group mb-3">
-  <label class="input-group-text" for="inputGroupSelect01">Departamento</label>
-  <select class="form-select" id="inputGroupSelect01">
-    <option selected>...</option>
-    <option value="1">Montevideo</option>
-    <option value="2">Canelones</option>
-    <option value="3">Colonia</option>
-  </select>
-</div>
+    let shipping = 0.15; // Premium por defecto
 
-          <div class="input-group">
-  <span class="input-group-text">Dirección:</span>
-  <input type="text" aria-label="direccion" class="form-control">
-  
-</div>
+    function updateShipping() {
+      shippingCost = Math.round(subtotal * shipping);
+      $("#shippingCost").html("Costo de Envío: " + shippingCost);
+      let costoTotal = subtotal + shippingCost;
+      $("#costoTotal").html("Total: " + costoTotal);
+    }
+    function updateTotalCosts() {
+      subtotal = unitCost * qt;
+      $("#qt").val(qt);
+      $("#qt").html(qt);
+      $("#subtotal").html("Subtotal: " + subtotal);
+    }
+    $("#premium").click(function () {
+      shipping = 0.15;
+      updateShipping();
+    });
 
-<button type="button" class="btn btn-primary">Check Out</button>
-        </div>
+    $("#express").click(function () {
+      shipping = 0.07;
+      updateShipping();
+    });
 
-      </div>
-  `;
+    $("#standard").click(function () {
+      shipping = 0.05;
+      updateShipping();
+    });
 
-    document.getElementById("cart").innerHTML = htmlContenttoAppend;
-
-    document.getElementById("qt").value = count;
-    document.getElementById("artTotal").innerHTML = total;
-
-    document.getElementById("qt").onclick = function () {
-      let qt = document.getElementById("qt").value;
-      document.getElementById("artTotal").innerHTML = qt * cost;
-    };
+    $("#qt").change(function () {
+      qt = this.value;
+      updateTotalCosts();
+      updateShipping();
+    });
   });
+
+
