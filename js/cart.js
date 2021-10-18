@@ -13,7 +13,7 @@ fetch(CART_INFO_URL)
     <img src="..." class="card-img-top" alt="..." id="artImg">
     <div class="card-body">
       <h5 class="card-title" id="artName">Card title</h5>
-      <input type="number" min="0" id="qt" style="width: 40px;" value="2">
+      <input type="number" min="0" id="qt" style="width:40px;font-size:12pt;" value="2">
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item" id="unitCost">An item</li>
@@ -23,7 +23,6 @@ fetch(CART_INFO_URL)
       <li class="list-group-item" id="subtotal">A third item</li>
       <li class="list-group-item" id="shippingCost">Costo de Envío: </li>
       <li class="list-group-item" id="costoTotal">Total: </li>
-      <li class="list-group-item"><button type="button" class="btn btn-danger" id="clean">Limpiar</button> </li>
     </ul>
     <div class="card-body">
       <button type="button" class="btn btn-secondary btn-lg" style="width: 27rem">CheckOut</button>
@@ -37,7 +36,8 @@ fetch(CART_INFO_URL)
     $("#subtotal").html("Subtotal: " + subtotal);
     $("#artImg").attr("src", artImg);
 
-    let shipping = 0.15; // Premium por defecto
+
+    let shipping = 0.15; // Premium
 
     function updateShipping() {
       shippingCost = Math.round(subtotal * shipping);
@@ -47,8 +47,6 @@ fetch(CART_INFO_URL)
     }
     function updateTotalCosts() {
       subtotal = unitCost * qt;
-      $("#qt").val(qt);
-      $("#qt").html(qt);
       $("#subtotal").html("Subtotal: " + subtotal);
     }
     $("#premium").click(function () {
@@ -72,5 +70,3 @@ fetch(CART_INFO_URL)
       updateShipping();
     });
   });
-
-
