@@ -44,26 +44,41 @@
       <div class="py-2 d-none d-md-inline-block" id="showUser"></div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
-  </div>
-  <footer class="text-muted bg-light">
-    <div class="container">
-      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
-  </footer>
-  <div class="alert fade alert-success" role="alert" id="alertResult">
-    <span id="resultSpan"></span>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
+  
+
+
+  <form>
+    <label for="fname">Nombre:</label><br>
+    <input type="text" id="profName" name="fname"  class="profile" required><br>
+    <label for="lname">Apellido:</label><br>
+    <input type="text" id="profLast" name="lname"  class="profile" required><br>
+    <label for="lname">e-mail:</label><br>
+    <input type="email" id="profEmail" name="lname"  class="profile" required><br>
+    <label for="lname">Edad</label><br>
+    <input type="number" id="profAge" name="lname"   min="18" class="profile"  required><br>
+    <label for="lname">Telefono</label><br>
+    <input type="text" id="profPhone" name="lname"  class="profile" required><br><br>
+    <input type="submit" value="Guardar Datos" class="btn btn-primary" id="profButton">
+  </form> 
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
