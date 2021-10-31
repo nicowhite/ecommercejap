@@ -15,27 +15,21 @@ fetch(PRODUCTS_URL)
 
             htmlContentToAppend +=
             `
-            <a href="product-info.html" style="text-decoration: none;">
-             <div class="list-group-item list-group-item-action">
-              <div class="row">
-              <div class="col-3">
-                  <img src="` + image + `" alt="` + description + `" class="img-thumbnail">
-              </div>
-              <div class="col">
-                  <div class="d-flex w-100 justify-content-between">
-                      <h4 class="mb-1">`+ nombre + `</h4>
-                      <small class="text-muted">` + currency + ' ' + cost + `</small><br>
-                      <small class="text-muted">` + sold + ` vendidos</small>
-                    
+            <div class="col-md-3">
+            <a href="product-info.html" class="card mb-4 shadow-sm custom-card">
+                <img class="bd-placeholder-img card-img-top" src="` + image + `" alt="` + nombre + `>
+                <h3 class="m-3"></h3>
+                <h3 class="m-3">`+ nombre + ` (` +  sold  + `) </h3>
+                <div class="card-body">
+                <p class="card-text">` + cost + ` ` + currency + `</p>
+                <p class="card-text">` + description + `</p>  
+                </div>
+                 </a>
+                </div>
+       
 
-                  </div>
-              
-                  <div class="text-muted"> <h5>` + description + `</h5></div>
-              </div>
-              
-            </div>
-            </div>
-            
+        
+
             `
             i++;
     }      
@@ -115,7 +109,6 @@ function relevance() {
             data.sort(function(a, b) {
                 return b.soldCount - a.soldCount;
             });
-            let listaRelev = "";
             let i = 0;
             while(i < data.length) {
                 let producto = data[i];
@@ -161,7 +154,6 @@ document.getElementById("sortByCount").onclick = function () {
                 data.sort(function(a, b) {
                     return a.cost - b.cost;
                 });
-                let listaRelev = "";
                 let i = 0;
                 while(i < data.length) {
                     let product = data[i];
@@ -187,6 +179,7 @@ document.getElementById("sortByCount").onclick = function () {
                      
                    </div>
                    </div>
+                   
                    `
                    i++;
                     document.getElementById("productsContainer").innerHTML = htmlContentToAppend;
@@ -207,7 +200,6 @@ function higherPrice() {
             data.sort(function(a, b) {
                 return b.cost - a.cost;
             });
-            let listaRelev = "";
             let i = 0;
             while(i < data.length) {
                 let product = data[i];
