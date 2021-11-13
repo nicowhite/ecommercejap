@@ -25,9 +25,38 @@ fetch(CART_INFO_URL)
       <li class="list-group-item" id="costoTotal">Total: </li>
     </ul>
     <div class="card-body">
-      <button type="button" class="btn btn-secondary btn-lg" style="width: 27rem">CheckOut</button>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
+      Forma de Pago
+    </button>
     </div>
   </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Forma de Pago</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+
+
 `);
 
     $("#artName").html(name);
@@ -35,7 +64,6 @@ fetch(CART_INFO_URL)
     $("#qt").html(qt);
     $("#subtotal").html("Subtotal: " + subtotal);
     $("#artImg").attr("src", artImg);
-
 
     let shipping = 0.15; // Premium
 
