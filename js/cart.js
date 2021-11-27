@@ -24,35 +24,121 @@ fetch(CART_INFO_URL)
       <li class="list-group-item" id="shippingCost">Costo de Envío: </li>
       <li class="list-group-item" id="costoTotal">Total: </li>
     </ul>
-    <div class="card-body">
+    
+
+
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="addMethod">
       Forma de Pago
     </button>
-    </div>
-  </div>
+   
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Forma de Pago</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Forma de Pago</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+
+
+
+
+
+          
+
+          <form id="formP">
+          <div class="form-group row">
+            <label for="card" class="col-sm-2 col-form-label">Tarjeta</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="card" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="code" class="col-sm-2 col-form-label">CVV</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="code" required>
+            </div>
+          </div>
+          <div class="form-group row">
+          <label for="city" class="col-sm-2 col-form-label">Ciudad</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="city" required>
+          </div>
         </div>
-        <div class="modal-body">
-          ...
+          <fieldset class="form-group row">
+            <legend class="col-form-label col-sm-2 float-sm-left pt-0">Tipo de Pago</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"  id="cashOption">
+                <label class="form-check-label" for="gridRadios1">
+                Efectivo
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="cardOption" checked value="option2">
+                <label class="form-check-label" for="gridRadios2">
+                  Tarjeta
+                </label>
+              </div>
+              
+            </div>
+          </fieldset>
+          <div class="form-group row">
+            <div class="col-sm-10 offset-sm-2">
+              <div class="form-check">
+             
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-10">
+              <button type="submit" class="btn btn-primary" id="payment">Aceptar Medio de Pago</button>
+            </div>
+          </div>
+        </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+        
       </div>
     </div>
-  </div>
-  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 
 
@@ -98,3 +184,20 @@ fetch(CART_INFO_URL)
       updateShipping();
     });
   });
+
+////// Entrega 7 ////////
+
+$("cashOption").click(() => {
+  $("card").attr("disabled", true);
+  $("code").attr("disabled", true);
+  $("city").attr("disabled", true);
+});
+
+
+
+$("#buy").click(() => {
+  let quantity = $("#qt").val();
+  if (quantity > 0) {
+    alert("Su compra ha sido Realizada con Exito");
+  }
+});
